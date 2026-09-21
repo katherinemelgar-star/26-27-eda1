@@ -33,5 +33,31 @@ public class Fila {
 
     public int obtenerLongitud() {
         return cantidad;
-}
+    }
+
+    public void actualizarTiempos() {
+        for (int i = 0; i < cantidad; i++) {
+            personas[i].esperarMinuto();
+        }
+    }
+
+    public int purgarAburridos() {
+        int aburridos = 0;
+        for (int i = cantidad - 1; i >= 0; i--) {
+            boolean seVa = personas[i].seAburre();
+            aburridos = aburridos + (seVa ? 1 : 0);
+            this.eliminarSiEsNecesario(i, seVa);
+        }
+        return aburridos;
+    }
+
+    private void eliminarSiEsNecesario(int indice, boolean borrar) {
+        if (borrar) {
+            for (int i = indice; i < cantidad - 1; i++) {
+                personas[i] = personas[i + 1];
+            }
+            cantidad--;
+            personas[cantidad] = null;
+        }
+    }
 }
