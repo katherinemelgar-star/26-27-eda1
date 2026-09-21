@@ -1,5 +1,4 @@
 public class Fila {
-
     private Persona[] personas;
     private int cantidad;
     final private int CAPACIDAD_MAXIMA = 30; 
@@ -11,12 +10,10 @@ public class Fila {
 
     public int recibir(Persona persona) {
         boolean cabe = cantidad < CAPACIDAD_MAXIMA;
-        
         if (cabe) {
             personas[cantidad] = persona;
             cantidad++;
         }
-        
         return cabe ? 1 : 0; 
     }
 
