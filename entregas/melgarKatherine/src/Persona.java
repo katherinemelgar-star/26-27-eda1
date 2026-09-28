@@ -1,15 +1,50 @@
-public class Persona {
-    private int minutosEsperando;
+class Persona {
 
-    public Persona() {
-        minutosEsperando = 0;
+    private String nombre;
+    private Persona siguiente;
+    private Persona anterior;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+        siguiente = null;
+        anterior = null;
     }
 
-    public void esperarMinuto() {
-        minutosEsperando++;
+    public void encolar(Persona persona) {
+        if (siguiente == null) {
+            siguiente = persona;
+            persona.vaDelante(this);
+        } else {
+            siguiente.encolar(persona);
+        }
     }
 
-    public boolean seAburre() {
-        return minutosEsperando > 8 && Math.random() < 0.3;
+    public boolean haySiguiente() {
+        return siguiente != null;
     }
+
+    public Persona devolverSiguiente() {
+        Persona nuevoPrimero = siguiente;
+        siguiente = null;
+        if (nuevoPrimero != null) {
+            nuevoPrimero.vaDelante(null);
+        }
+        return nuevoPrimero;
+    }
+
+    public void vaDelante(Persona persona) {
+        anterior = persona;
+    }
+
+    public void salir() {
+        if (anterior != null) {
+            anterior.siguiente = siguiente;
+        }
+        if (siguiente != null) {
+            siguiente.anterior = anterior;
+        }
+        anterior = null;
+        siguiente = null;
+    }
+
 }
