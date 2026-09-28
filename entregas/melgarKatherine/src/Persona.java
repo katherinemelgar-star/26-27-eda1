@@ -47,4 +47,22 @@ class Persona {
         siguiente = null;
     }
 
+    public String obtenerNombre() {
+        return this.nombre;
+    }
+
+    public void mostrar() {
+        System.out.println(nombre);
+        if (siguiente != null) {
+            siguiente.mostrar();
+        }
+    }
+
+    public int contar() {
+        if (siguiente == null) {
+            return 1;
+        }
+        return 1 + siguiente.contar();
+    }
+
 }
