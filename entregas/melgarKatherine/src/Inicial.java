@@ -20,7 +20,7 @@ class Inicial {
         primero.mostrar();
         System.out.println("Total de personas: " + primero.contar());
 
-        System.out.println("\n--- ESTADO DE LA FILA (AL REVES) ---");
+        System.out.println("\n--- ESTADO DE LA FILA ---");
         primero.mostrarAlReves();
 
         System.out.println("\n--- ATENDIENDO Y VACIANDO LA FILA ---");
