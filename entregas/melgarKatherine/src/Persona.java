@@ -64,5 +64,33 @@ class Persona {
         }
         return 1 + siguiente.contar();
     }
+    
+    public void mostrarAlReves() {
+        if (siguiente != null) {
+            siguiente.mostrarAlReves();
+        }
+        System.out.println(nombre);
+    }
 
+    public Persona buscar(String nombreBuscado) {
+        if (this.nombre.equals(nombreBuscado)) {
+            return this;
+        }
+        if (siguiente == null) {
+            return null;
+        }
+        return siguiente.buscar(nombreBuscado);
+    }
+
+    public void colarseDetrasDe(Persona personaDestino) {
+        Persona aux = personaDestino.siguiente;
+        
+        personaDestino.siguiente = this;
+        this.anterior = personaDestino;
+        
+        this.siguiente = aux;
+        if (aux != null) {
+            aux.anterior = this;
+        }
+    }
 }
