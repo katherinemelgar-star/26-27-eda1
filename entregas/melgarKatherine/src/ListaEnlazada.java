@@ -73,5 +73,30 @@ class ListaEnlazada {
         }
     }
 
-    public static ListaEnlazada fusionar() {}
+    public static ListaEnlazada fusionar(ListaEnlazada a, ListaEnlazada b) {
+        
+        ListaEnlazada resultado = new ListaEnlazada();
+        Nodo dummy = new Nodo(-1);
+        Nodo cola = dummy;
+        Nodo nodoA = a.cabeza;
+        Nodo nodoB = b.cabeza;
+
+        for (; nodoA != null && nodoB != null; cola = cola.siguiente) {
+            if (nodoA.dato <= nodoB.dato) {
+                cola.siguiente = nodoA;
+                nodoA = nodoA.siguiente;
+            } else {
+                cola.siguiente = nodoB;
+                nodoB = nodoB.siguiente;
+            }
+        }
+
+        cola.siguiente = (nodoA != null) ? nodoA : nodoB;
+
+        resultado.cabeza = dummy.siguiente;
+        a.cabeza = null;
+        b.cabeza = null;
+
+        return resultado;
+    }
 }
