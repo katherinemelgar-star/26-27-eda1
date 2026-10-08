@@ -1,5 +1,3 @@
-package listas.nodoDummy;
-
 class ListaEnlazada { 
     private Nodo cabeza;
 
@@ -74,7 +72,7 @@ class ListaEnlazada {
     }
 
     public static ListaEnlazada fusionar(ListaEnlazada a, ListaEnlazada b) {
-        
+
         ListaEnlazada resultado = new ListaEnlazada();
         Nodo dummy = new Nodo(-1);
         Nodo cola = dummy;
